@@ -4,6 +4,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getit/core/models/item_model.dart';
 import 'package:getit/core/utils/extensions/context.dart';
+import 'package:getit/features/category/widgets/arrow_painter.dart';
+import 'package:getit/features/category/widgets/category_screen_appbar.dart';
+import 'package:getit/features/category/widgets/product_primary_details.dart';
 import 'package:getit/features/home/widgets/constants.dart';
 import 'package:like_button/like_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -63,38 +66,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
         categoryItems.length, (index) => GlobalKey<LikeButtonState>());
     return CupertinoPageScaffold(
       backgroundColor: const Color(0xff9daf9b),
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: CupertinoColors.white,
-        padding: EdgeInsetsDirectional.symmetric(horizontal: 5.w),
-        leading: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: SizedBox(
-              width: 80.w,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(
-                    CupertinoIcons.chevron_back,
-                    color: CupertinoColors.systemGrey,
-                    size: 25.sp,
-                  ),
-                  Text(
-                    'Back',
-                    style: context.textStyles.thin200,
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        middle: Text(
-          widget.categoryName,
-          style: context.textStyles.mThick.copyWith(fontSize: 20.sp),
-        ),
+      navigationBar: categoryScreenAppBar(
+        context,
+        widget.categoryName,
       ),
       child: SafeArea(
         child: Column(
@@ -173,56 +147,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         SizedBox(
                           height: 15.h,
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    categoryItems[index].itemName,
-                                    style: context.textStyles.mThick,
-                                  ),
-                                  Text(
-                                    categoryItems[index].itemBrand,
-                                    style: context.textStyles.mThick,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 8.h,
-                              ),
-                              RatingBar.builder(
-                                itemSize: 18,
-                                wrapAlignment: WrapAlignment.start,
-                                initialRating: categoryItems[index].itemRating,
-                                direction: Axis.horizontal,
-                                allowHalfRating: true,
-                                itemPadding: EdgeInsets.zero,
-                                unratedColor:
-                                    CupertinoColors.black.withOpacity(0.1),
-                                ignoreGestures: true,
-                                itemBuilder: (context, _) => const Icon(
-                                  Icons.star_rounded,
-                                  color: CupertinoColors.black,
-                                ),
-                                onRatingUpdate: (rating) {},
-                              ),
-                              SizedBox(
-                                height: 2.h,
-                              ),
-                              Text(
-                                "${categoryItems[index].itemPrice.toStringAsFixed(2)} USD",
-                                style: context.textStyles.thin200.copyWith(
-                                  color: CupertinoColors.black,
-                                  fontSize: 18.sp,
-                                ),
-                              ),
-                            ],
-                          ),
+                        ProductPrimaryDetails(
+                          product: categoryItems[index],
                         ),
                       ],
                     ),
@@ -288,74 +214,5 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
       ),
     );
-  }
-}
-
-class ArrowPainter extends CustomPainter {
-  final double arrowLength;
-  final bool isLeft;
-  ArrowPainter({
-    required this.arrowLength,
-    required this.isLeft,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint1 = Paint()
-      ..color = CupertinoColors.white.withOpacity(0.75)
-      ..strokeWidth = 1
-      ..strokeCap = StrokeCap.round;
-    final Paint paint2 = Paint()
-      ..color = CupertinoColors.white.withOpacity(0.75)
-      ..strokeWidth = 1
-      ..strokeCap = StrokeCap.round;
-
-    const double arrowWidth = 10.0;
-
-    // Draw arrow tail
-    canvas.drawLine(
-      Offset(5, size.height / 2),
-      Offset(arrowLength, size.height / 2),
-      paint1,
-    );
-
-    // Draw arrowhead (open head) towards right
-    !isLeft
-        ? canvas.drawLine(
-            Offset(
-                arrowLength - arrowWidth, size.height / 2.5 - arrowWidth / 2),
-            Offset(arrowLength, size.height / 2),
-            paint2,
-          )
-        : null;
-    !isLeft
-        ? canvas.drawLine(
-            Offset(arrowLength, size.height / 2),
-            Offset(
-                arrowLength - arrowWidth, size.height / 1.5 + arrowWidth / 2),
-            paint2,
-          )
-        : null;
-    // Draw arrowhead (open head) towards left
-    isLeft
-        ? canvas.drawLine(
-            Offset(arrowWidth + 5, size.height / 2.5 - arrowWidth / 2),
-            Offset(5, size.height / 2),
-            paint2,
-          )
-        : null;
-
-    isLeft
-        ? canvas.drawLine(
-            Offset(5, size.height / 2),
-            Offset(arrowWidth + 5, size.height / 1.5 + arrowWidth / 2),
-            paint2,
-          )
-        : null;
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
   }
 }

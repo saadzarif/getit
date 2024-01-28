@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RecipeListItemTextWrapper extends StatefulWidget {
-  const RecipeListItemTextWrapper({
+class ProductListItemTextWrapper extends StatefulWidget {
+  const ProductListItemTextWrapper({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -9,11 +9,11 @@ class RecipeListItemTextWrapper extends StatefulWidget {
   final Widget child;
 
   @override
-  State<RecipeListItemTextWrapper> createState() =>
-      _RecipeListItemTextWrapperState();
+  State<ProductListItemTextWrapper> createState() =>
+      _ProductListItemTextWrapperState();
 }
 
-class _RecipeListItemTextWrapperState extends State<RecipeListItemTextWrapper>
+class _ProductListItemTextWrapperState extends State<ProductListItemTextWrapper>
     with SingleTickerProviderStateMixin {
   late final AnimationController animationController;
   late final Animation<Offset> offsetAnimation;

@@ -15,30 +15,26 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
-   
     Future.delayed(
       const Duration(milliseconds: 3200),
       () async {
-         Navigator.of(context).push(PageRouteBuilder(
-                        pageBuilder: (context, animation, secondaryAnimation) =>
-                            const HomeScreen(
-                        ),
-                        transitionDuration: const Duration(milliseconds: 1200),
-                        transitionsBuilder:
-                            (context, animation, secondaryAnimation, child) {
-                          var begin = const Offset(1.0, 0.0);
-                          var end = Offset.zero;
-                          var curve = Curves.fastEaseInToSlowEaseOut;
-                          var tween = Tween(begin: begin, end: end)
-                              .chain(CurveTween(curve: curve));
+        Navigator.of(context).pushReplacement(PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const HomeScreen(),
+          transitionDuration: const Duration(milliseconds: 1200),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            var begin = const Offset(1.0, 0.0);
+            var end = Offset.zero;
+            var curve = Curves.fastEaseInToSlowEaseOut;
+            var tween =
+                Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-                          return SlideTransition(
-                            position: animation.drive(tween),
-                            
-                            child: child,
-                          );
-                        },
-                      ));
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        ));
         // Navigator.of(context).push(CupertinoPageRoute(
         //   builder: (context) => const HomeScreen(),
         // ));

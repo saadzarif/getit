@@ -58,81 +58,67 @@ List<Widget> basicDetails(
   ];
 }
 
-
-
-
-List<Widget> basicDetailsForHeroAnimation(
-    {required ItemModel product, required BuildContext context,required Animation<double> animation}) {
-  return [
-       Image.asset(
-                                      brandImages[product.itemBrand],
-                                      height: (1.0 - animation.value) * 30.h +
-                                          animation.value * 35.h,
-                                      width: (1.0 - animation.value) * 30.h +
-                                          animation.value * 35.h,
-                                      color: CupertinoColors.white,
-                                    ),
-                                    SizedBox(
-                                      height: (1.0 - animation.value) * 1.h +
-                                          animation.value * 5.h,
-                                    ),
-                                    Text(
-                                      product.itemName,
-                                      style: context.textStyles.mThick.copyWith(
-                                        color: CupertinoColors.white,
-                                        // fontSize: 22.sp,
-                                        fontSize:
-                                            (1.0 - animation.value) * 16.sp +
-                                                animation.value * 22.sp,
-                                        fontWeight: animation.value > 0.5
-                                            ? FontWeight.w800
-                                            : null,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: (1.0 - animation.value) * 4.5.h +
-                                          animation.value * 5.h,
-                                    ),
-                                    RatingBar.builder(
-                                      itemSize: 18,
-                                      wrapAlignment: WrapAlignment.start,
-                                      initialRating: product.itemRating,
-                                      direction: Axis.horizontal,
-                                      allowHalfRating: true,
-                                      itemPadding: EdgeInsets.zero,
-                                      unratedColor: CupertinoColors.white
-                                          .withOpacity(0.1),
-                                      ignoreGestures: true,
-                                      itemBuilder: (context, _) => const Icon(
-                                        Icons.star_rounded,
-                                        color: CupertinoColors.white,
-                                      ),
-                                      onRatingUpdate: (rating) {},
-                                    ),
-                                    SizedBox(
-                                      height: (1.0 - animation.value) * 4.h +
-                                          animation.value * 5.h,
-                                    ),
-                                    Text(
-                                      "${product.itemPrice.toStringAsFixed(2)} USD",
-                                      style: GoogleFonts.inter(
-                                        color: CupertinoColors.white,
-                                        fontSize:
-                                            (1.0 - animation.value) * 18.sp +
-                                                animation.value * 20.sp,
-                                        fontWeight: animation.value < 0.3
-                                            ? FontWeight.w200
-                                            : animation.value < 0.7
-                                                ? FontWeight.w300
-                                                : FontWeight.w400,
-                                        fontStyle: FontStyle.normal,
-                                        decoration: TextDecoration.none,
-                                        letterSpacing: 0,
-                                      ),
-                                    ),
-  ];
+Widget basicDetailsForHeroAnimation(
+    {required ItemModel product,
+    required BuildContext context,
+    required Animation<double> animation}) {
+  return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Image.asset(
+          brandImages[product.itemBrand],
+          height: (1.0 - animation.value) * 30.h + animation.value * 35.h,
+          width: (1.0 - animation.value) * 30.h + animation.value * 35.h,
+          color: CupertinoColors.white,
+        ),
+        SizedBox(
+          height: (1.0 - animation.value) * 1.h + animation.value * 5.h,
+        ),
+        Text(
+          product.itemName,
+          style: context.textStyles.mThick.copyWith(
+            color: CupertinoColors.white,
+            // fontSize: 22.sp,
+            fontSize: (1.0 - animation.value) * 16.sp + animation.value * 22.sp,
+            fontWeight: animation.value > 0.5 ? FontWeight.w800 : null,
+          ),
+        ),
+        SizedBox(
+          height: (1.0 - animation.value) * 4.5.h + animation.value * 5.h,
+        ),
+        RatingBar.builder(
+          itemSize: 18,
+          wrapAlignment: WrapAlignment.start,
+          initialRating: product.itemRating,
+          direction: Axis.horizontal,
+          allowHalfRating: true,
+          itemPadding: EdgeInsets.zero,
+          unratedColor: CupertinoColors.white.withOpacity(0.1),
+          ignoreGestures: true,
+          itemBuilder: (context, _) => const Icon(
+            Icons.star_rounded,
+            color: CupertinoColors.white,
+          ),
+          onRatingUpdate: (rating) {},
+        ),
+        SizedBox(
+          height: (1.0 - animation.value) * 4.h + animation.value * 5.h,
+        ),
+        Text(
+          "${product.itemPrice.toStringAsFixed(2)} USD",
+          style: GoogleFonts.inter(
+            color: CupertinoColors.white,
+            fontSize: (1.0 - animation.value) * 18.sp + animation.value * 20.sp,
+            fontWeight: animation.value < 0.3
+                ? FontWeight.w200
+                : animation.value < 0.7
+                    ? FontWeight.w300
+                    : FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            decoration: TextDecoration.none,
+            letterSpacing: 0,
+          ),
+        ),
+      ]);
 }
-
-
-
-

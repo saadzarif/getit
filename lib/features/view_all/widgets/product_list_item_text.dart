@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getit/core/models/item_model.dart';
 import 'package:getit/core/utils/extensions/context.dart';
 import 'package:getit/features/home/widgets/constants.dart';
-import 'package:getit/features/view_all/widgets/recipe_list_item_text_wrapper.dart';
+import 'package:getit/features/view_all/widgets/product_list_item_text_wrapper.dart';
 
-class RecipeListItemText extends StatelessWidget {
-  const RecipeListItemText(
+class ProductListItemText extends StatelessWidget {
+  const ProductListItemText(
     this.menuItem, {
     Key? key,
   }) : super(key: key);
@@ -17,7 +17,7 @@ class RecipeListItemText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RecipeListItemTextWrapper(
+    return ProductListItemTextWrapper(
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 20.w,

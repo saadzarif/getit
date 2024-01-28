@@ -5,7 +5,7 @@ import 'package:getit/core/models/item_model.dart';
 import 'package:getit/features/home/widgets/constants.dart';
 import 'package:getit/features/view_all/widgets/appbar.dart';
 import 'package:getit/features/view_all/widgets/item_container.dart';
-import 'package:getit/features/view_all/widgets/recipe_list_item_wrapper.dart';
+import 'package:getit/features/view_all/widgets/product_list_item_wrapper.dart';
 
 class ViewAllScreen extends StatefulWidget {
   const ViewAllScreen({super.key});
@@ -66,7 +66,7 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
               return ValueListenableBuilder(
                 valueListenable: scrollDirectionNotifier,
                 builder: (context, ScrollDirection scrollDirection, child) {
-                  return RecipeListItemWrapper(
+                  return ProductListItemWrapper(
                     scrollDirection: scrollDirection,
                     child: child!,
                   );

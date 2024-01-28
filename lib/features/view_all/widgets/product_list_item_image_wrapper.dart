@@ -2,8 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-class RecipeListItemImageWrapper extends StatefulWidget {
-  const RecipeListItemImageWrapper({
+class ProductListItemImageWrapper extends StatefulWidget {
+  const ProductListItemImageWrapper({
     Key? key,
     required this.child,
     this.playOnce = false,
@@ -14,11 +14,11 @@ class RecipeListItemImageWrapper extends StatefulWidget {
   final bool playOnce;
   final bool invert;
   @override
-  State<RecipeListItemImageWrapper> createState() =>
-      _RecipeListItemImageWrapperState();
+  State<ProductListItemImageWrapper> createState() =>
+      _ProductListItemImageWrapperState();
 }
 
-class _RecipeListItemImageWrapperState extends State<RecipeListItemImageWrapper>
+class _ProductListItemImageWrapperState extends State<ProductListItemImageWrapper>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late final AnimationController animationController;
   late final Animation<double> scaleAnimation;

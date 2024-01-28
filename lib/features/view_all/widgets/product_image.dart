@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:getit/core/models/item_model.dart';
 
-class RecipeImage extends StatelessWidget {
-  const RecipeImage(
+class ProductImage extends StatelessWidget {
+  const ProductImage(
     this.recipe, {
     Key? key,
     this.imageRotationAngle = 0,
