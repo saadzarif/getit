@@ -1,16 +1,5 @@
 # getit
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+A UI I made in my free time
+UI link https://dribbble.com/shots/22731660-Shopping-App-UI
+Open for work. 
+![getit](https://github.com/tariqzarif/getit/assets/102945917/6c7ad7ee-623f-41dd-bf93-29b2d82de621)
